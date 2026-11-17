@@ -1,0 +1,1814 @@
+
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#100c16">
+<title>JAORICHE STUDIO16</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Prompt:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg:#100c16;
+  --panel:#191321;
+  --panel2:#211827;
+  --panel3:#2a1d30;
+  --text:#f5eaf5;
+  --muted:#ad9aaf;
+  --pink:#e9a9cf;
+  --pink2:#b86da7;
+  --line:#49334c;
+  --danger:#e58a9a;
+  --success:#a8d7b4;
+  --gold:#d9bd87;
+  --radius:18px;
+  --shadow:0 12px 35px #0005;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:
+    radial-gradient(ellipse at 10% 0%,#38213d66,transparent 35%),
+    radial-gradient(ellipse at 100% 30%,#30203955,transparent 35%),
+    var(--bg);
+  color:var(--text);
+  font-family:'Prompt',sans-serif;
+  font-size:14px;
+  min-height:100vh;
+  padding-bottom:90px;
+}
+button,input,textarea,select{font:inherit}
+button{cursor:pointer}
+button:disabled{opacity:.45;cursor:not-allowed}
+img{max-width:100%;display:block}
+.hidden{display:none!important}
+.muted{color:var(--muted)}
+.small{font-size:12px}
+.serif{font-family:'Cormorant Garamond',serif}
+.container{width:min(1100px,calc(100% - 28px));margin:auto}
+.section{padding:24px 0}
+.section-title{
+  font-family:'Cormorant Garamond',serif;
+  font-size:27px;
+  letter-spacing:1px;
+  margin:0 0 5px;
+}
+.section-subtitle{color:var(--muted);font-size:12px;margin:0 0 18px}
+.card{
+  background:linear-gradient(145deg,#211827,#17111e);
+  border:1px solid var(--line);
+  border-radius:var(--radius);
+  padding:17px;
+  box-shadow:var(--shadow);
+}
+.btn{
+  border:1px solid #80577e;
+  border-radius:12px;
+  padding:10px 15px;
+  color:var(--text);
+  background:linear-gradient(135deg,#694565,#38283f);
+  transition:.2s;
+}
+.btn:hover{filter:brightness(1.15);transform:translateY(-1px)}
+.btn.primary{
+  color:#251525;
+  background:linear-gradient(135deg,#f1c3df,#bd82b5);
+  border-color:#e9b4d8;
+  font-weight:600;
+}
+.btn.ghost{background:#ffffff08;border-color:var(--line)}
+.btn.danger{background:#542a39;border-color:#9b536b}
+.btn.tiny{padding:6px 10px;font-size:12px;border-radius:9px}
+input,textarea,select{
+  width:100%;
+  background:#100c16;
+  border:1px solid var(--line);
+  color:var(--text);
+  border-radius:11px;
+  padding:11px 12px;
+  outline:none;
+}
+input:focus,textarea:focus,select:focus{border-color:var(--pink)}
+textarea{resize:vertical;min-height:85px}
+label{display:block;font-size:12px;color:var(--muted);margin:0 0 6px}
+.field{margin-bottom:13px}
+.row{display:flex;gap:10px;align-items:center}
+.row.wrap{flex-wrap:wrap}
+.row.between{justify-content:space-between}
+.grid{display:grid;gap:14px}
+.divider{height:1px;background:var(--line);margin:15px 0}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  border:1px solid var(--line);
+  background:#ffffff08;
+  padding:4px 9px;
+  border-radius:30px;
+  color:var(--pink);
+  font-size:11px;
+}
+header{padding:15px 0 5px}
+.brand-card{
+  position:relative;
+  overflow:hidden;
+  border:1px solid var(--line);
+  border-radius:22px;
+  background:linear-gradient(135deg,#291a30,#15101b 75%);
+  box-shadow:var(--shadow);
+}
+.banner{
+  height:145px;
+  background:
+    linear-gradient(90deg,#100c16bb,#100c1644),
+    radial-gradient(circle at 75% 30%,#9e5b9466,transparent 35%),
+    linear-gradient(135deg,#49304d,#17111e);
+  background-position:center;
+  background-size:cover;
+}
+.brand-content{padding:0 18px 18px}
+.avatar{
+  width:82px;height:82px;border-radius:50%;
+  border:3px solid var(--panel);
+  background:#33233a;
+  object-fit:cover;
+  margin-top:-42px;
+  position:relative;
+}
+.brand-name{
+  font-family:'Cormorant Garamond',serif;
+  font-size:30px;
+  letter-spacing:2px;
+  margin:10px 0 2px;
+}
+.brand-description{color:var(--muted);font-size:12px}
+.brand-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.top-tools{display:flex;justify-content:flex-end;gap:8px;margin-bottom:10px}
+main{min-height:60vh}
+.bottom-nav{
+  position:fixed;z-index:50;bottom:0;left:0;right:0;
+  display:flex;justify-content:center;
+  background:#130e1bef;
+  backdrop-filter:blur(18px);
+  border-top:1px solid var(--line);
+  padding:9px 5px calc(9px + env(safe-area-inset-bottom));
+}
+.nav-inner{
+  width:min(650px,100%);
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:3px;
+}
+.nav-btn{
+  border:0;background:transparent;color:var(--muted);
+  padding:7px 2px;border-radius:12px;font-size:11px;
+}
+.nav-btn span{display:block;font-size:19px;margin-bottom:3px}
+.nav-btn.active{color:var(--pink);background:#e9a9cf12}
+.toast{
+  position:fixed;z-index:100;bottom:90px;left:50%;
+  transform:translateX(-50%);
+  background:#302139;border:1px solid var(--pink2);
+  border-radius:30px;padding:10px 17px;
+  box-shadow:var(--shadow);font-size:12px;
+  opacity:0;pointer-events:none;transition:.25s;
+}
+.toast.show{opacity:1}
+.empty{
+  text-align:center;padding:35px 15px;color:var(--muted);
+  border:1px dashed var(--line);border-radius:15px;
+}
+.empty .symbol{font-size:35px;margin-bottom:8px}
+.modal-backdrop{
+  position:fixed;inset:0;background:#000a;z-index:80;
+  display:flex;align-items:center;justify-content:center;
+  padding:15px;
+}
+.modal{
+  width:min(520px,100%);max-height:88vh;overflow:auto;
+  background:var(--panel);border:1px solid var(--line);
+  border-radius:20px;padding:20px;box-shadow:var(--shadow);
+}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:17px}
+.modal-head h3{margin:0;font-family:'Cormorant Garamond',serif;font-size:25px}
+.close-btn{background:none;border:0;color:var(--text);font-size:23px}
+@media(min-width:700px){
+  .banner{height:190px}
+  .brand-content{padding-left:25px;padding-right:25px}
+  .avatar{width:100px;height:100px;margin-top:-50px}
+  .brand-name{font-size:36px}
+}
+</style>
+</head>
+
+<body>
+
+<header class="container">
+  <div class="top-tools">
+    <button class="btn ghost tiny" onclick="openAdmin()">♛ ADMIN</button>
+  </div>
+
+  <div class="brand-card">
+    <div class="banner" id="shopBanner"></div>
+    <div class="brand-content">
+      <img class="avatar" id="shopAvatar" alt="Shop profile">
+      <div class="brand-name" id="shopName">JAORICHE STUDIO16</div>
+      <div class="brand-description" id="shopDescription">
+        Gothic little things · Welcome to my store ♡
+      </div>
+      <div class="brand-actions" id="shopLinks"></div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <!-- PRODUCTS -->
+  <section class="section page-section" id="page-products">
+    <h2 class="section-title">Our Collection ♡</h2>
+    <p class="section-subtitle">Discover something special in our little store</p>
+
+    <div class="row wrap" style="margin-bottom:15px">
+      <input id="productSearch" placeholder="ค้นหาสินค้า..." oninput="renderProducts()" style="flex:1;min-width:150px">
+      <select id="categoryFilter" onchange="renderProducts()" style="width:auto;min-width:125px">
+        <option value="">ทุกหมวดหมู่</option>
+      </select>
+    </div>
+
+    <div id="productGrid" class="grid"></div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="section page-section hidden" id="page-reviews">
+    <h2 class="section-title">Customer Reviews ♡</h2>
+    <p class="section-subtitle">Your words mean so much to us</p>
+    <div id="reviewList"></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section page-section hidden" id="page-contact">
+    <h2 class="section-title">Contact Us</h2>
+    <p class="section-subtitle">Get in touch with JAORICHE STUDIO16</p>
+    <div class="card" id="contactContent"></div>
+  </section>
+
+  <!-- PAYMENT -->
+  <section class="section page-section hidden" id="page-payment">
+    <h2 class="section-title">Payment Method ♡</h2>
+    <p class="section-subtitle">Choose your preferred payment account</p>
+
+    <div id="paymentContent"></div>
+  </section>
+
+  <!-- CART -->
+  <section class="section page-section hidden" id="page-cart">
+    <h2 class="section-title">Shopping Cart</h2>
+    <p class="section-subtitle">Your selected items</p>
+    <div id="cartContent"></div>
+  </section>
+
+  <!-- RECEIPT -->
+  <section class="section page-section hidden" id="page-receipt">
+    <h2 class="section-title">Receipt History</h2>
+    <p class="section-subtitle">Your order records</p>
+    <div id="receiptHistory"></div>
+  </section>
+
+  <!-- ADMIN -->
+  <section class="section page-section hidden" id="page-admin">
+    <h2 class="section-title">Admin Studio ♛</h2>
+    <p class="section-subtitle">Manage your shop</p>
+    <div id="adminContent"></div>
+  </section>
+
+</main>
+
+<nav class="bottom-nav">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="showPage('products',this)">
+      <span>♧</span>สินค้า
+    </button>
+    <button class="nav-btn" onclick="showPage('reviews',this)">
+      <span>♡</span>รีวิว
+    </button>
+    <button class="nav-btn" onclick="showPage('contact',this)">
+      <span>✉</span>ติดต่อ
+    </button>
+    <button class="nav-btn" onclick="showPage('payment',this)">
+      <span>♢</span>ชำระเงิน
+    </button>
+    <button class="nav-btn" onclick="showPage('cart',this)">
+      <span>🛒</span>ตะกร้า <b id="cartCount">0</b>
+    </button>
+  </div>
+</nav>
+
+<div class="toast" id="toast"></div>
+
+<div id="modalRoot"></div>
+  
+<script>
+// ============================================
+// JAORICHE STUDIO16 — CONFIGURATION
+// ============================================
+
+// หากต้องการใช้ Firebase Realtime Database
+// ให้นำ URL ของฐานข้อมูลมาใส่ตรงนี้
+// ตัวอย่าง: https://your-project-default-rtdb.firebaseio.com
+// หากปล่อยว่าง ระบบจะใช้ LocalStorage
+const FIREBASE_DB_URL = "";
+const FIREBASE_AUTH_TOKEN = "";
+
+const STORAGE_KEY = "jaoriche_studio16_store_v1";
+const ADMIN_PASSWORD = "1234"; // เปลี่ยนรหัสผ่านแอดมินตรงนี้
+
+const defaultData = {
+  settings:{
+    shopName:"JAORICHE STUDIO16",
+    description:"Gothic little things · Welcome to my store ♡",
+    avatar:"",
+    banner:"",
+    ownerName:"",
+    slipNote:"ขอบคุณที่อุดหนุน JAORICHE STUDIO16 นะคะ ♡",
+    qrImage:"",
+    contacts:[]
+  },
+  products:[],
+  payments:[],
+  reviews:[],
+  receipts:[]
+};
+
+let data = loadData();
+let cart = [];
+let isAdmin = false;
+let currentPage = "products";
+
+// ============================================
+// DATA STORAGE
+// ============================================
+
+function clone(value){
+  return JSON.parse(JSON.stringify(value));
+}
+
+function loadData(){
+  try{
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if(saved){
+      const parsed = JSON.parse(saved);
+      return {...clone(defaultData),...parsed,
+        settings:{...defaultData.settings,...(parsed.settings||{})}};
+    }
+  }catch(error){
+    console.error("Load error:",error);
+  }
+  return clone(defaultData);
+}
+
+let saveTimer;
+
+function saveData(){
+  localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+  clearTimeout(saveTimer);
+  saveTimer = setTimeout(syncFirebase,500);
+}
+
+async function syncFirebase(){
+  if(!FIREBASE_DB_URL) return;
+  try{
+    const url = FIREBASE_DB_URL.replace(/\/$/,"")+
+      "/jaoricheStudio16.json"+
+      (FIREBASE_AUTH_TOKEN?"?auth="+encodeURIComponent(FIREBASE_AUTH_TOKEN):"");
+    const response = await fetch(url,{
+      method:"PUT",
+      headers:{"Content-Type":"application/json"},
+      body:JSON.stringify(data)
+    });
+    if(!response.ok) throw new Error("Firebase save failed");
+  }catch(error){
+    console.error(error);
+    toast("บันทึกออนไลน์ไม่สำเร็จ ข้อมูลในเครื่องยังอยู่");
+  }
+}
+
+async function loadFirebase(){
+  if(!FIREBASE_DB_URL) return;
+  try{
+    const url = FIREBASE_DB_URL.replace(/\/$/,"")+
+      "/jaoricheStudio16.json"+
+      (FIREBASE_AUTH_TOKEN?"?auth="+encodeURIComponent(FIREBASE_AUTH_TOKEN):"");
+    const response = await fetch(url);
+    if(!response.ok) throw new Error("Firebase load failed");
+    const remote = await response.json();
+    if(remote){
+      data = {
+        ...clone(defaultData),
+        ...remote,
+        settings:{...defaultData.settings,...(remote.settings||{})}
+      };
+      localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+      renderAll();
+    }
+  }catch(error){
+    console.error(error);
+    toast("เชื่อมต่อฐานข้อมูลไม่ได้ กำลังใช้ข้อมูลในเครื่อง");
+  }
+}
+
+// ============================================
+// COMMON HELPERS
+// ============================================
+
+function escapeHTML(value=""){
+  return String(value).replace(/[&<>"']/g,char=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+  })[char]);
+}
+
+function money(value){
+  return Number(value||0).toLocaleString("th-TH",{
+    minimumFractionDigits:2,
+    maximumFractionDigits:2
+  });
+}
+
+function toast(message){
+  const el=document.getElementById("toast");
+  el.textContent=message;
+  el.classList.add("show");
+  clearTimeout(toast.timer);
+  toast.timer=setTimeout(()=>el.classList.remove("show"),2200);
+}
+
+function showPage(page,button){
+  currentPage=page;
+  document.querySelectorAll(".page-section").forEach(section=>{
+    section.classList.add("hidden");
+  });
+  const target=document.getElementById("page-"+page);
+  if(target) target.classList.remove("hidden");
+
+  document.querySelectorAll(".nav-btn").forEach(item=>{
+    item.classList.remove("active");
+  });
+  if(button) button.classList.add("active");
+  else{
+    const nav=[...document.querySelectorAll(".nav-btn")];
+    const index={products:0,reviews:1,contact:2,payment:3,cart:4}[page];
+    if(nav[index]) nav[index].classList.add("active");
+  }
+  window.scrollTo({top:0,behavior:"smooth"});
+  renderAll();
+}
+
+function makeId(){
+  return "item_"+Date.now()+"_"+Math.random().toString(36).slice(2,7);
+}
+
+function imageOrPlaceholder(src,alt=""){
+  if(src){
+    return `<img src="${escapeHTML(src)}" alt="${escapeHTML(alt)}">`;
+  }
+  return `<div class="empty"><div class="symbol">♢</div><span>NO IMAGE</span></div>`;
+}
+
+// ============================================
+// SHOP PROFILE
+// ============================================
+
+function renderProfile(){
+  const s=data.settings;
+  document.getElementById("shopName").textContent=s.shopName||"JAORICHE STUDIO16";
+  document.getElementById("shopDescription").textContent=s.description||"";
+  document.getElementById("shopAvatar").src=s.avatar||"data:image/svg+xml,"+
+    encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#302139"/><text x="50" y="62" font-size="42" text-anchor="middle" fill="#e9a9cf">J</text></svg>');
+  document.getElementById("shopBanner").style.backgroundImage=s.banner
+    ?`linear-gradient(#100c1644,#100c1644),url("${s.banner}")`:"";
+  document.getElementById("shopLinks").innerHTML=(s.contacts||[]).map(link=>
+    `<a class="btn ghost tiny" href="${escapeHTML(link.url)}" target="_blank" rel="noopener">${escapeHTML(link.name)}</a>`
+  ).join("");
+}
+
+// ============================================
+// PRODUCT DISPLAY
+// ============================================
+
+function getCategories(){
+  return [...new Set(data.products.map(p=>p.category).filter(Boolean))];
+}
+
+function renderCategoryFilter(){
+  const select=document.getElementById("categoryFilter");
+  const current=select.value;
+  select.innerHTML='<option value="">ทุกหมวดหมู่</option>'+
+    getCategories().map(c=>`<option value="${escapeHTML(c)}">${escapeHTML(c)}</option>`).join("");
+  select.value=current;
+}
+
+function renderProducts(){
+  const grid=document.getElementById("productGrid");
+  if(!grid) return;
+
+  renderCategoryFilter();
+
+  const search=(document.getElementById("productSearch")?.value||"").toLowerCase();
+  const category=document.getElementById("categoryFilter")?.value||"";
+
+  const products=data.products.filter(p=>{
+    const matchSearch=(p.name+" "+(p.description||"")+" "+(p.category||"")+" "+(p.tags||[]).join(" ")).toLowerCase().includes(search);
+    return matchSearch&&(!category||p.category===category);
+  });
+
+  if(!products.length){
+    grid.innerHTML=`<div class="empty" style="grid-column:1/-1">
+      <div class="symbol">♧</div>
+      ยังไม่มีสินค้าในหมวดนี้
+    </div>`;
+    return;
+  }
+
+  grid.innerHTML=products.map(p=>{
+    const badges=[];
+    if(p.hit) badges.push('<span class="pill">✦ HIT</span>');
+    if(p.recommended) badges.push('<span class="pill">♡ RECOMMENDED</span>');
+    if(p.sale) badges.push('<span class="pill">SALE</span>');
+
+    return `
+    <article class="product-card">
+      <div class="product-image" onclick="openProductDetail('${p.id}')">
+        ${p.image
+          ?`<img src="${p.image}" alt="${escapeHTML(p.name)}">`
+          :`<div class="empty"><div class="symbol">♢</div>NO IMAGE</div>`}
+        <div class="product-badges">${badges.join("")}</div>
+      </div>
+      <div class="product-info">
+        <div class="small muted">${escapeHTML(p.category||"COLLECTION")}</div>
+        <h3>${escapeHTML(p.name)}</h3>
+        <div class="product-price">฿${money(p.price)}</div>
+        <div class="small muted product-description">${escapeHTML(p.description||"")}</div>
+        <button class="btn primary" style="width:100%;margin-top:12px"
+          onclick="addToCart('${p.id}')">＋ เพิ่มลงตะกร้า</button>
+      </div>
+    </article>`;
+  }).join("");
+}
+
+function openProductDetail(id){
+  const p=data.products.find(item=>item.id===id);
+  if(!p) return;
+
+  document.getElementById("modalRoot").innerHTML=`
+  <div class="modal-backdrop" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <h3>Product Details ♡</h3>
+        <button class="close-btn" onclick="closeModal()">×</button>
+      </div>
+      ${p.image?`<img src="${p.image}" style="width:100%;max-height:280px;object-fit:contain;border-radius:14px;background:#100c16">`:""}
+      <h2>${escapeHTML(p.name)}</h2>
+      <div class="product-price">฿${money(p.price)}</div>
+      <p class="muted">${escapeHTML(p.description||"ไม่มีรายละเอียดสินค้า")}</p>
+      <div class="row wrap">${(p.tags||[]).map(t=>`<span class="pill">${escapeHTML(t)}</span>`).join("")}</div>
+      ${p.driveLink?`<p><a class="btn ghost" href="${escapeHTML(p.driveLink)}" target="_blank" rel="noopener">↗ เปิดลิงก์สินค้า</a></p>`:""}
+      <button class="btn primary" style="width:100%" onclick="addToCart('${p.id}');closeModal()">เพิ่มลงตะกร้า</button>
+    </div>
+  </div>`;
+}
+
+function closeModal(event){
+  if(event&&event.target!==event.currentTarget) return;
+  document.getElementById("modalRoot").innerHTML="";
+}
+
+// ============================================
+// CART
+// ============================================
+
+function addToCart(id){
+  const product=data.products.find(p=>p.id===id);
+  if(!product) return;
+  const existing=cart.find(item=>item.id===id);
+  if(existing) existing.qty++;
+  else cart.push({id,qty:1});
+  renderCart();
+  toast("เพิ่มสินค้าในตะกร้าแล้ว ♡");
+}
+
+function updateCartCount(){
+  const count=cart.reduce((sum,item)=>sum+item.qty,0);
+  document.getElementById("cartCount").textContent=count;
+}
+
+function cartTotal(){
+  return cart.reduce((sum,item)=>{
+    const p=data.products.find(product=>product.id===item.id);
+    return sum+(p?Number(p.price)*item.qty:0);
+  },0);
+}
+
+function changeQty(id,amount){
+  const item=cart.find(i=>i.id===id);
+  if(!item) return;
+  item.qty+=amount;
+  if(item.qty<=0) cart=cart.filter(i=>i.id!==id);
+  renderCart();
+}
+
+function renderCart(){
+  updateCartCount();
+  const root=document.getElementById("cartContent");
+  if(!root) return;
+
+  if(!cart.length){
+    root.innerHTML='<div class="empty"><div class="symbol">♡</div>ตะกร้าของคุณยังว่างอยู่</div>';
+    return;
+  }
+
+  root.innerHTML=`
+    <div class="grid">
+      ${cart.map(item=>{
+        const p=data.products.find(product=>product.id===item.id);
+        if(!p) return "";
+        return `<div class="card">
+          <div class="row">
+            ${p.image?`<img src="${p.image}" style="width:70px;height:70px;object-fit:cover;border-radius:12px">`:""}
+            <div style="flex:1">
+              <b>${escapeHTML(p.name)}</b>
+              <div class="muted small">฿${money(p.price)} / ชิ้น</div>
+              <b>฿${money(p.price*item.qty)}</b>
+            </div>
+            <div class="row">
+              <button class="btn tiny" onclick="changeQty('${p.id}',-1)">−</button>
+              <b>${item.qty}</b>
+              <button class="btn tiny" onclick="changeQty('${p.id}',1)">＋</button>
+            </div>
+          </div>
+        </div>`;
+      }).join("")}
+    </div>
+    <div class="card" style="margin-top:15px">
+      <div class="row between"><span>ยอดรวมสินค้า</span><b class="product-price">฿${money(cartTotal())}</b></div>
+      <div class="divider"></div>
+      <button class="btn primary" style="width:100%" onclick="createReceipt()">สร้างใบเสร็จ ♡</button>
+    </div>`;
+}
+</script>
+    
+<style>
+.product-card{
+  overflow:hidden;background:linear-gradient(145deg,#211827,#17111e);
+  border:1px solid var(--line);border-radius:17px;
+}
+.product-image{
+  height:190px;background:#100c16;position:relative;
+  cursor:pointer;overflow:hidden;
+}
+.product-image>img{width:100%;height:100%;object-fit:cover;transition:.3s}
+.product-image:hover>img{transform:scale(1.04)}
+.product-badges{
+  position:absolute;top:9px;left:9px;
+  display:flex;flex-wrap:wrap;gap:5px;
+}
+.product-info{padding:13px}
+.product-info h3{font-size:15px;margin:5px 0}
+.product-price{color:var(--pink);font-size:18px;font-weight:600}
+.product-description{
+  display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden;
+}
+.receipt-paper{
+  background:#f8eff7;color:#302438;
+  border-radius:15px;padding:22px;
+  font-family:'Prompt',sans-serif;
+}
+.receipt-paper h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:27px;text-align:center;margin:0;
+}
+.receipt-paper .muted{color:#806d80}
+.receipt-line{
+  display:flex;justify-content:space-between;
+  gap:12px;padding:7px 0;border-bottom:1px dashed #cbb9ca;
+}
+.receipt-total{
+  font-size:20px;font-weight:700;color:#70456d;
+  display:flex;justify-content:space-between;margin-top:14px;
+}
+.receipt-qr{
+  width:130px;height:130px;object-fit:contain;
+  margin:15px auto 5px;background:white;padding:5px;
+}
+</style>
+
+<script>
+// ============================================
+// RECEIPT GENERATION
+// ============================================
+
+function createReceipt(){
+  if(!cart.length){
+    toast("ยังไม่มีสินค้าในตะกร้า");
+    return;
+  }
+
+  const items=cart.map(item=>{
+    const p=data.products.find(product=>product.id===item.id);
+    return p?{
+      id:p.id,name:p.name,price:Number(p.price),
+      qty:item.qty,total:Number(p.price)*item.qty
+    }:null;
+  }).filter(Boolean);
+
+  const total=items.reduce((sum,item)=>sum+item.total,0);
+  const receipt={
+    id:"JR"+Date.now(),
+    date:new Date().toISOString(),
+    customer:"",
+    items,total
+  };
+
+  document.getElementById("modalRoot").innerHTML=`
+  <div class="modal-backdrop" onclick="closeModal(event)">
+    <div class="modal" onclick="event.stopPropagation()">
+      <div class="modal-head">
+        <h3>Create Receipt ♡</h3>
+        <button class="close-btn" onclick="closeModal()">×</button>
+      </div>
+      <div class="field">
+        <label>ชื่อลูกค้า</label>
+        <input id="receiptCustomer" placeholder="กรอกชื่อลูกค้า">
+      </div>
+      <div class="receipt-paper" id="receiptPreview">
+        ${receiptHTML(receipt)}
+      </div>
+      <div class="row wrap" style="margin-top:15px">
+        <button class="btn primary" style="flex:1" onclick="saveReceipt('${receipt.id}')">บันทึกใบเสร็จเป็นรูป</button>
+        <button class="btn ghost" onclick="printReceipt('${receipt.id}')">พิมพ์</button>
+      </div>
+    </div>
+  </div>`;
+
+  window.pendingReceipt=receipt;
+}
+
+function receiptHTML(receipt){
+  const s=data.settings;
+  const date=new Date(receipt.date).toLocaleString("th-TH");
+  return `
+    <h2>JAORICHE STUDIO16</h2>
+    <div style="text-align:center;font-size:11px;color:#806d80">GOTHIC LITTLE THINGS ♡</div>
+    <div style="border-top:1px dashed #bda9bd;margin:14px 0"></div>
+    <div style="font-size:12px">
+      <div>Receipt: ${escapeHTML(receipt.id)}</div>
+      <div>Date: ${escapeHTML(date)}</div>
+      <div>Customer: ${escapeHTML(receipt.customer||"-")}</div>
+    </div>
+    <div style="border-top:1px dashed #bda9bd;margin:12px 0"></div>
+    ${receipt.items.map(item=>`
+      <div class="receipt-line">
+        <div style="flex:1">
+          <b>${escapeHTML(item.name)}</b>
+          <div style="font-size:11px;color:#806d80">${item.qty} × ฿${money(item.price)}</div>
+        </div>
+        <b>฿${money(item.total)}</b>
+      </div>
+    `).join("")}
+    <div class="receipt-total">
+      <span>TOTAL</span><span>฿${money(receipt.total)}</span>
+    </div>
+    ${s.qrImage?`
+      <img class="receipt-qr" src="${s.qrImage}" alt="Payment QR">
+      <div style="text-align:center;font-size:10px">PAYMENT QR CODE</div>
+    `:""}
+    <div style="text-align:center;margin-top:15px;font-size:12px">
+      ${escapeHTML(s.slipNote||"Thank you for your order ♡")}
+    </div>
+    <div style="text-align:center;font-size:10px;color:#806d80;margin-top:12px">
+      JAORICHE STUDIO16 · THANK YOU ♡
+    </div>`;
+}
+
+function saveReceipt(id){
+  const receipt=window.pendingReceipt;
+  if(!receipt||receipt.id!==id) return;
+
+  receipt.customer=document.getElementById("receiptCustomer").value.trim();
+  const preview=document.getElementById("receiptPreview");
+  preview.innerHTML=receiptHTML(receipt);
+
+  downloadElementImage(preview,"receipt-"+id+".png").then(()=>{
+    data.receipts.unshift(clone(receipt));
+    saveData();
+    cart=[];
+    renderCart();
+    renderReceiptHistory();
+    closeModal();
+    toast("บันทึกใบเสร็จแล้ว ♡");
+  }).catch(error=>{
+    console.error(error);
+    toast("บันทึกรูปไม่สำเร็จ");
+  });
+}
+
+function printReceipt(id){
+  const receipt=window.pendingReceipt;
+  if(!receipt||receipt.id!==id) return;
+  receipt.customer=document.getElementById("receiptCustomer").value.trim();
+
+  const w=window.open("","_blank");
+  if(!w){
+    toast("กรุณาอนุญาตหน้าต่างป๊อปอัป");
+    return;
+  }
+  w.document.write(`
+    <!DOCTYPE html><html><head><meta charset="UTF-8">
+    <title>Receipt ${escapeHTML(id)}</title>
+    <style>
+      body{font-family:Arial,sans-serif;padding:20px}
+      .receipt-paper{max-width:420px;margin:auto}
+      .receipt-line{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px dashed #aaa}
+      .receipt-total{display:flex;justify-content:space-between;font-weight:bold;font-size:20px}
+      .receipt-qr{width:130px;height:130px;object-fit:contain;display:block;margin:15px auto}
+    </style></head><body>
+    <div class="receipt-paper">${receiptHTML(receipt)}</div>
+    <script>window.onload=()=>window.print();<\/script>
+    </body></html>`);
+  w.document.close();
+}
+
+async function downloadElementImage(element,filename){
+  if(typeof html2canvas==="undefined"){
+    await loadHtml2Canvas();
+  }
+  const canvas=await html2canvas(element,{
+    scale:2,backgroundColor:"#f8eff7",useCORS:true
+  });
+  const link=document.createElement("a");
+  link.download=filename;
+  link.href=canvas.toDataURL("image/png");
+  link.click();
+}
+
+function loadHtml2Canvas(){
+  return new Promise((resolve,reject)=>{
+    const script=document.createElement("script");
+    script.src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js";
+    script.onload=resolve;
+    script.onerror=reject;
+    document.head.appendChild(script);
+  });
+}
+
+// ============================================
+// RECEIPT HISTORY
+// ============================================
+
+function renderReceiptHistory(){
+  const root=document.getElementById("receiptHistory");
+  if(!root) return;
+
+  if(!data.receipts.length){
+    root.innerHTML='<div class="empty">ยังไม่มีประวัติใบเสร็จ</div>';
+    return;
+  }
+
+  root.innerHTML=data.receipts.map(r=>`
+    <div class="card" style="margin-bottom:12px">
+      <div class="row between">
+        <b>${escapeHTML(r.id)}</b>
+        <span class="pill">฿${money(r.total)}</span>
+      </div>
+      <div class="small muted">${new Date(r.date).toLocaleString("th-TH")}</div>
+      <div class="small">ลูกค้า: ${escapeHTML(r.customer||"-")}</div>
+      <div class="small muted">${r.items.length} รายการ</div>
+      <div class="row wrap" style="margin-top:10px">
+        <button class="btn tiny" onclick="viewOldReceipt('${r.id}')">ดูใบเสร็จ</button>
+        ${isAdmin?`<button class="btn danger tiny" onclick="deleteReceipt('${r.id}')">ลบประวัติ</button>`:""}
+      </div>
+    </div>
+  `).join("");
+}
+
+function viewOldReceipt(id){
+  const r=data.receipts.find(item=>item.id===id);
+  if(!r) return;
+  document.getElementById("modalRoot").innerHTML=`
+    <div class="modal-backdrop" onclick="closeModal(event)">
+      <div class="modal" onclick="event.stopPropagation()">
+        <div class="modal-head">
+          <h3>Receipt</h3>
+          <button class="close-btn" onclick="closeModal()">×</button>
+        </div>
+        <div class="receipt-paper" id="oldReceipt">${receiptHTML(r)}</div>
+        <button class="btn primary" style="width:100%;margin-top:14px"
+          onclick="downloadElementImage(document.getElementById('oldReceipt'),'${r.id}.png')">
+          บันทึกเป็นรูป
+        </button>
+      </div>
+    </div>`;
+}
+
+function deleteReceipt(id){
+  if(!confirm("ต้องการลบประวัติใบเสร็จนี้หรือไม่?")) return;
+  data.receipts=data.receipts.filter(r=>r.id!==id);
+  saveData();
+  renderReceiptHistory();
+  toast("ลบประวัติแล้ว");
+}
+</script>
+
+<style>
+.payment-qr-card{text-align:center;margin-bottom:14px}
+.payment-qr-frame{
+  width:min(250px,100%);aspect-ratio:1;
+  margin:14px auto 0;padding:10px;
+  border:1px dashed var(--pink2);
+  border-radius:16px;background:#100c16;
+  display:flex;align-items:center;justify-content:center;
+}
+.payment-qr-frame img{width:100%;height:100%;object-fit:contain}
+.payment-qr-placeholder{color:var(--muted);font-size:12px}
+.payment-owner{
+  margin-bottom:14px;
+  background:linear-gradient(135deg,#39243e,#211827);
+  border:1px solid #80577e;
+}
+.payment-owner .owner-label{font-size:11px;color:var(--pink)}
+.payment-owner .owner-name{font-size:19px;font-weight:600;margin-top:4px}
+.payment-account{
+  margin-bottom:12px;
+  position:relative;
+  overflow:hidden;
+}
+.payment-account:before{
+  content:"";position:absolute;left:0;top:0;bottom:0;width:3px;
+  background:linear-gradient(var(--pink),var(--pink2));
+}
+.payment-icon{
+  width:43px;height:43px;border-radius:13px;
+  background:#e9a9cf16;border:1px solid var(--line);
+  display:grid;place-items:center;font-size:22px;
+  flex-shrink:0;
+}
+.payment-app-en{
+  font-family:'Cormorant Garamond',serif;
+  font-size:23px;font-weight:700;letter-spacing:.6px;
+}
+.payment-app-th{font-size:11px;color:var(--muted);margin-top:-3px}
+.payment-account-number{
+  background:#100c16;border:1px dashed var(--line);
+  border-radius:10px;padding:12px;
+  font-size:17px;letter-spacing:1px;
+  word-break:break-all;margin:13px 0;
+}
+.payment-note-card{
+  margin-top:15px;
+  background:linear-gradient(135deg,#332239,#1b1422);
+}
+.payment-note-text{
+  background:#100c16;border:1px dashed var(--line);
+  border-radius:12px;padding:13px;
+  line-height:1.8;white-space:pre-wrap;
+}
+.admin-payment-item{
+  display:flex;align-items:center;gap:8px;
+  padding:10px;background:#100c16;
+  border:1px solid var(--line);border-radius:12px;
+  margin:8px 0;
+}
+</style>
+
+<script>
+// ============================================
+// PAYMENT DISPLAY
+// ============================================
+
+function renderPayment(){
+  const root=document.getElementById("paymentContent");
+  if(!root) return;
+
+  const s=data.settings;
+  const qr=s.qrImage
+    ?`<img src="${s.qrImage}" alt="QR Code">`
+    :`<div class="payment-qr-placeholder">ยังไม่ได้เพิ่ม QR Code</div>`;
+
+  root.innerHTML=`
+    <!-- 1. QR CODE AT TOP -->
+    <div class="card payment-qr-card">
+      <div class="pill">♡ PAYMENT QR CODE</div>
+      <h3 style="margin:10px 0 0">Scan to Pay</h3>
+      <div class="payment-qr-frame">${qr}</div>
+    </div>
+
+    <!-- 2. ACCOUNT OWNER -->
+    <div class="card payment-owner">
+      <div class="owner-label">ACCOUNT OWNER · ชื่อเจ้าของบัญชี</div>
+      <div class="owner-name">${escapeHTML(s.ownerName||"ยังไม่ได้ระบุชื่อเจ้าของบัญชี")}</div>
+    </div>
+
+    <!-- 3. ACCOUNT CARDS -->
+    <div>
+      ${data.payments.length?data.payments.map((p,index)=>`
+        <div class="card payment-account">
+          <div class="row">
+            <div class="payment-icon">${escapeHTML(p.icon||"♢")}</div>
+            <div style="flex:1;min-width:0">
+              <div class="payment-app-en">${escapeHTML(p.heading||"ACCOUNT")}</div>
+              <div class="payment-app-th">${escapeHTML(p.subheading||"")}</div>
+            </div>
+          </div>
+          ${p.details?`<div class="small muted" style="margin-top:10px">${escapeHTML(p.details)}</div>`:""}
+          <div class="payment-account-number" id="account-${p.id}">${escapeHTML(p.accountNumber||"")}</div>
+          <button class="btn primary" style="width:100%"
+            onclick="copyText('${p.id}','account')">▣ คัดลอกเลขบัญชี</button>
+        </div>
+      `).join(""):`<div class="empty">ยังไม่มีบัญชีสำหรับรับชำระเงิน</div>`}
+    </div>
+
+    <!-- 4. SLIP MESSAGE -->
+    <div class="card payment-note-card">
+      <div class="pill">SLIP NOTE ♡</div>
+      <h3 style="margin:10px 0">ข้อความแจ้งสลิป</h3>
+      <div class="payment-note-text" id="slipNoteText">${escapeHTML(s.slipNote||"")}</div>
+      <button class="btn primary" style="width:100%;margin-top:12px"
+        onclick="copyText('slip','note')">▣ คัดลอกข้อความ</button>
+    </div>
+  `;
+}
+
+// ============================================
+// COPY FUNCTIONS
+// ============================================
+
+async function copyText(id,type){
+  let value="";
+  if(type==="account"){
+    const p=data.payments.find(item=>item.id===id);
+    if(!p) return;
+    value=p.accountNumber||"";
+  }else{
+    value=data.settings.slipNote||"";
+  }
+
+  try{
+    if(navigator.clipboard&&window.isSecureContext){
+      await navigator.clipboard.writeText(value);
+    }else{
+      const temp=document.createElement("textarea");
+      temp.value=value;
+      temp.style.position="fixed";
+      temp.style.opacity="0";
+      document.body.appendChild(temp);
+      temp.select();
+      document.execCommand("copy");
+      temp.remove();
+    }
+    toast("คัดลอกเรียบร้อยแล้ว ♡");
+  }catch(error){
+    toast("คัดลอกไม่สำเร็จ กรุณาลองใหม่");
+  }
+}
+
+// ============================================
+// PAYMENT ADMIN
+// ============================================
+
+function paymentAdminHTML(){
+  return `
+    <div class="card">
+      <h3>Payment Settings ♢</h3>
+
+      <div class="field">
+        <label>QR Code รูปภาพ</label>
+        <input type="file" accept="image/*" id="paymentQRFile" onchange="uploadPaymentQR(this)">
+        ${data.settings.qrImage?`
+          <div style="margin-top:10px">
+            <img src="${data.settings.qrImage}" style="width:120px;height:120px;object-fit:contain;background:#100c16;border-radius:12px">
+            <button class="btn danger tiny" onclick="removePaymentQR()">ลบ QR Code</button>
+          </div>`:""}
+      </div>
+
+      <div class="field">
+        <label>ชื่อเจ้าของบัญชี</label>
+        <input id="paymentOwnerInput" value="${escapeHTML(data.settings.ownerName||"")}" placeholder="ชื่อเจ้าของบัญชี">
+      </div>
+
+      <div class="field">
+        <label>ข้อความแจ้งสลิป</label>
+        <textarea id="paymentNoteInput">${escapeHTML(data.settings.slipNote||"")}</textarea>
+      </div>
+
+      <button class="btn primary" onclick="savePaymentSettings()">บันทึกข้อมูล Payment</button>
+    </div>
+
+    <div class="card" style="margin-top:14px">
+      <div class="row between">
+        <h3>Account Cards</h3>
+        <button class="btn primary tiny" onclick="openPaymentEditor()">＋ เพิ่มบัญชี</button>
+      </div>
+      <p class="small muted">สามารถแก้ไข ลบ และเลื่อนลำดับการ์ดบัญชีได้</p>
+      <div id="paymentAdminList">${renderPaymentAdminList()}</div>
+    </div>
+  `;
+}
+
+function renderPaymentAdminList(){
+  if(!data.payments.length) return '<div class="empty">ยังไม่มีการ์ดบัญชี</div>';
+
+  return data.payments.map((p,index)=>`
+    <div class="admin-payment-item">
+      <div class="payment-icon">${escapeHTML(p.icon||"♢")}</div>
+      <div style="flex:1;min-width:0">
+        <b>${escapeHTML(p.heading)}</b>
+        <div class="small muted">${escapeHTML(p.subheading||"")}</div>
+        <div class="small">${escapeHTML(p.accountNumber||"")}</div>
+      </div>
+      <div style="display:grid;gap:4px">
+        <button class="btn tiny" onclick="movePayment('${p.id}',-1)" ${index===0?"disabled":""}>↑</button>
+        <button class="btn tiny" onclick="movePayment('${p.id}',1)" ${index===data.payments.length-1?"disabled":""}>↓</button>
+        <button class="btn tiny" onclick="openPaymentEditor('${p.id}')">แก้ไข</button>
+        <button class="btn danger tiny" onclick="deletePayment('${p.id}')">ลบ</button>
+      </div>
+    </div>
+  `).join("");
+}
+
+function uploadPaymentQR(input){
+  const file=input.files?.[0];
+  if(!file) return;
+  if(!file.type.startsWith("image/")){
+    toast("กรุณาเลือกไฟล์รูปภาพ");
+    return;
+  }
+  const reader=new FileReader();
+  reader.onload=()=>{
+    data.settings.qrImage=reader.result;
+    saveData();
+    renderPayment();
+    renderAdmin();
+    toast("เพิ่ม QR Code แล้ว ♡");
+  };
+  reader.readAsDataURL(file);
+}
+
+function removePaymentQR(){
+  if(!confirm("ต้องการลบ QR Code หรือไม่?")) return;
+  data.settings.qrImage="";
+  saveData();
+  renderPayment();
+  renderAdmin();
+}
+
+function savePaymentSettings(){
+  data.settings.ownerName=document.getElementById("paymentOwnerInput").value.trim();
+  data.settings.slipNote=document.getElementById("paymentNoteInput").value;
+  saveData();
+  renderPayment();
+  toast("บันทึก Payment แล้ว ♡");
+}
+
+function openPaymentEditor(id=""){
+  const old=data.payments.find(p=>p.id===id)||{
+    id:"",icon:"♢",heading:"",subheading:"",
+    accountNumber:"",details:""
+  };
+
+  document.getElementById("modalRoot").innerHTML=`
+    <div class="modal-backdrop" onclick="closeModal(event)">
+      <div class="modal" onclick="event.stopPropagation()">
+        <div class="modal-head">
+          <h3>${id?"Edit Account":"Add Account"}</h3>
+          <button class="close-btn" onclick="closeModal()">×</button>
+        </div>
+
+        <div class="field">
+          <label>เลือกไอคอนสำคัญ</label>
+          <select id="payIcon">
+            ${["♢","♡","✦","♛","🏦","💳","📱","🌙","🦇","🎀","⭐","✧"].map(icon=>
+              `<option value="${icon}" ${old.icon===icon?"selected":""}>${icon}</option>`
+            ).join("")}
+          </select>
+        </div>
+
+        <div class="field">
+          <label>หัวข้อหลักภาษาอังกฤษ</label>
+          <input id="payHeading" value="${escapeHTML(old.heading)}" placeholder="เช่น KASIKORNBANK">
+        </div>
+
+        <div class="field">
+          <label>หัวข้อรองภาษาไทย</label>
+          <input id="paySubheading" value="${escapeHTML(old.subheading)}" placeholder="เช่น ธนาคารกสิกรไทย">
+        </div>
+
+        <div class="field">
+          <label>เลขบัญชี / ข้อมูลบัญชี</label>
+          <input id="payAccountNumber" value="${escapeHTML(old.accountNumber)}" placeholder="กรอกเลขบัญชี">
+        </div>
+
+        <div class="field">
+          <label>รายละเอียดเพิ่มเติม (ถ้ามี)</label>
+          <textarea id="payDetails" placeholder="รายละเอียดเพิ่มเติม">${escapeHTML(old.details||"")}</textarea>
+        </div>
+
+        <button class="btn primary" style="width:100%" onclick="savePaymentCard('${id}')">บันทึกการ์ดบัญชี</button>
+      </div>
+    </div>`;
+}
+
+function savePaymentCard(id){
+  const heading=document.getElementById("payHeading").value.trim();
+  const accountNumber=document.getElementById("payAccountNumber").value.trim();
+  if(!heading||!accountNumber){
+    toast("กรุณากรอกหัวข้อและเลขบัญชี");
+    return;
+  }
+
+  const item={
+    id:id||makeId(),
+    icon:document.getElementById("payIcon").value,
+    heading,
+    subheading:document.getElementById("paySubheading").value.trim(),
+    accountNumber,
+    details:document.getElementById("payDetails").value.trim()
+  };
+
+  const index=data.payments.findIndex(p=>p.id===id);
+  if(index>=0) data.payments[index]=item;
+  else data.payments.push(item);
+
+  saveData();
+  closeModal();
+  renderPayment();
+  renderAdmin();
+  toast("บันทึกการ์ดบัญชีแล้ว ♡");
+}
+
+function deletePayment(id){
+  if(!confirm("ต้องการลบการ์ดบัญชีนี้หรือไม่?")) return;
+  data.payments=data.payments.filter(p=>p.id!==id);
+  saveData();
+  renderPayment();
+  renderAdmin();
+  toast("ลบการ์ดบัญชีแล้ว");
+}
+
+function movePayment(id,direction){
+  const index=data.payments.findIndex(p=>p.id===id);
+  const target=index+direction;
+  if(index<0||target<0||target>=data.payments.length) return;
+  [data.payments[index],data.payments[target]]=
+  [data.payments[target],data.payments[index]];
+  saveData();
+  renderPayment();
+  renderAdmin();
+}
+</script>
+  
+<style>
+.admin-tabs{
+  display:flex;gap:7px;overflow-x:auto;padding-bottom:9px;
+  margin-bottom:12px;
+}
+.admin-tab{white-space:nowrap}
+.admin-tab.active{background:var(--pink);color:#251525}
+.admin-product{
+  display:flex;gap:10px;align-items:center;
+  padding:10px;border:1px solid var(--line);
+  border-radius:12px;margin-bottom:9px;
+}
+.admin-product img{
+  width:58px;height:58px;object-fit:cover;border-radius:9px;
+}
+.review-card{margin-bottom:12px}
+.review-stars{color:var(--gold);letter-spacing:2px}
+</style>
+
+<script>
+// ============================================
+// ADMIN LOGIN
+// ============================================
+
+function openAdmin(){
+  if(isAdmin){
+    showPage("admin");
+    return;
+  }
+
+  document.getElementById("modalRoot").innerHTML=`
+    <div class="modal-backdrop" onclick="closeModal(event)">
+      <div class="modal" onclick="event.stopPropagation()">
+        <div class="modal-head">
+          <h3>Admin Login ♛</h3>
+          <button class="close-btn" onclick="closeModal()">×</button>
+        </div>
+        <div class="field">
+          <label>รหัสผ่านแอดมิน</label>
+          <input type="password" id="adminPasswordInput" placeholder="Password">
+        </div>
+        <button class="btn primary" style="width:100%" onclick="loginAdmin()">เข้าสู่ระบบ</button>
+      </div>
+    </div>`;
+}
+
+function loginAdmin(){
+  const password=document.getElementById("adminPasswordInput").value;
+  if(password!==ADMIN_PASSWORD){
+    toast("รหัสผ่านไม่ถูกต้อง");
+    return;
+  }
+  isAdmin=true;
+  closeModal();
+  showPage("admin");
+  toast("เข้าสู่ระบบแอดมินแล้ว ♡");
+}
+
+function logoutAdmin(){
+  isAdmin=false;
+  showPage("products");
+  toast("ออกจากระบบแล้ว");
+}
+
+// ============================================
+// ADMIN DASHBOARD
+// ============================================
+
+let adminTab="products";
+
+function renderAdmin(){
+  const root=document.getElementById("adminContent");
+  if(!root) return;
+
+  if(!isAdmin){
+    root.innerHTML='<div class="empty">กรุณาเข้าสู่ระบบแอดมินก่อน</div>';
+    return;
+  }
+
+  root.innerHTML=`
+    <div class="row between">
+      <span class="pill">ADMIN MODE ACTIVE</span>
+      <button class="btn danger tiny" onclick="logoutAdmin()">ออกจากระบบ</button>
+    </div>
+
+    <div class="admin-tabs" style="margin-top:15px">
+      <button class="btn ghost tiny admin-tab ${adminTab==="products"?"active":""}" onclick="setAdminTab('products')">สินค้า</button>
+      <button class="btn ghost tiny admin-tab ${adminTab==="payment"?"active":""}" onclick="setAdminTab('payment')">Payment</button>
+      <button class="btn ghost tiny admin-tab ${adminTab==="shop"?"active":""}" onclick="setAdminTab('shop')">โปรไฟล์ร้าน</button>
+      <button class="btn ghost tiny admin-tab ${adminTab==="reviews"?"active":""}" onclick="setAdminTab('reviews')">รีวิว</button>
+      <button class="btn ghost tiny admin-tab ${adminTab==="contacts"?"active":""}" onclick="setAdminTab('contacts')">ช่องทางติดต่อ</button>
+      <button class="btn ghost tiny admin-tab ${adminTab==="history"?"active":""}" onclick="setAdminTab('history')">ประวัติ</button>
+    </div>
+
+    <div id="adminTabContent"></div>
+  `;
+  renderAdminTab();
+}
+
+function setAdminTab(tab){
+  adminTab=tab;
+  renderAdmin();
+}
+
+function renderAdminTab(){
+  const root=document.getElementById("adminTabContent");
+  if(!root) return;
+
+  if(adminTab==="products"){
+    root.innerHTML=`
+      <div class="card">
+        <div class="row between">
+          <h3>จัดการสินค้า</h3>
+          <button class="btn primary tiny" onclick="openProductEditor()">＋ เพิ่มสินค้า</button>
+        </div>
+        ${data.products.length?data.products.map(p=>`
+          <div class="admin-product">
+            ${p.image?`<img src="${p.image}">`:`<div class="payment-icon">♢</div>`}
+            <div style="flex:1;min-width:0">
+              <b>${escapeHTML(p.name)}</b>
+              <div class="small muted">฿${money(p.price)} · ${escapeHTML(p.category||"-")}</div>
+            </div>
+            <button class="btn tiny" onclick="openProductEditor('${p.id}')">แก้ไข</button>
+            <button class="btn danger tiny" onclick="deleteProduct('${p.id}')">ลบ</button>
+          </div>
+        `).join(""):'<div class="empty">ยังไม่มีสินค้า</div>'}
+      </div>`;
+  }
+
+  if(adminTab==="payment"){
+    root.innerHTML=paymentAdminHTML();
+  }
+
+  if(adminTab==="shop"){
+    root.innerHTML=`
+      <div class="card">
+        <h3>Shop Profile</h3>
+        <div class="field">
+          <label>ชื่อร้าน</label>
+          <input id="settingShopName" value="${escapeHTML(data.settings.shopName)}">
+        </div>
+        <div class="field">
+          <label>คำอธิบายร้าน</label>
+          <textarea id="settingDescription">${escapeHTML(data.settings.description)}</textarea>
+        </div>
+        <div class="field">
+          <label>รูปโปรไฟล์ร้าน</label>
+          <input type="file" accept="image/*" id="settingAvatarFile">
+        </div>
+        <div class="field">
+          <label>รูปแบนเนอร์</label>
+          <input type="file" accept="image/*" id="settingBannerFile">
+        </div>
+        <button class="btn primary" onclick="saveShopProfile()">บันทึกโปรไฟล์</button>
+      </div>
+      <div class="card" style="margin-top:13px">
+        <h3>ข้อมูลระบบ</h3>
+        <p class="small muted">ระบบปัจจุบันใช้ ${FIREBASE_DB_URL?"Firebase Realtime Database + LocalStorage":"LocalStorage"} </p>
+        <button class="btn ghost tiny" onclick="exportBackup()">ส่งออกข้อมูลสำรอง JSON</button>
+        <label style="margin-top:13px">นำเข้าข้อมูลสำรอง JSON</label>
+        <input type="file" accept=".json,application/json" onchange="importBackup(this)">
+      </div>`;
+  }
+
+  if(adminTab==="reviews"){
+    root.innerHTML=`
+      <div class="card">
+        <h3>จัดการรีวิว</h3>
+        ${data.reviews.length?data.reviews.map(r=>`
+          <div class="review-card">
+            <b>${escapeHTML(r.name)}</b>
+            <div class="review-stars">${"★".repeat(r.rating||5)}</div>
+            <p class="small">${escapeHTML(r.message)}</p>
+            <button class="btn danger tiny" onclick="deleteReview('${r.id}')">ลบรีวิว</button>
+          </div>
+          <div class="divider"></div>
+        `).join(""):'<div class="empty">ยังไม่มีรีวิว</div>'}
+      </div>`;
+  }
+
+  if(adminTab==="contacts"){
+    root.innerHTML=`
+      <div class="card">
+        <div class="row between">
+          <h3>ช่องทางติดต่อ</h3>
+          <button class="btn primary tiny" onclick="addContact()">＋ เพิ่มลิงก์</button>
+        </div>
+        <div id="contactAdminList">${contactAdminList()}</div>
+      </div>`;
+  }
+
+  if(adminTab==="history"){
+    root.innerHTML=`
+      <div class="card">
+        <h3>ประวัติใบเสร็จ</h3>
+        <div id="adminHistoryList">${data.receipts.length?data.receipts.map(r=>`
+          <div class="admin-product">
+            <div style="flex:1">
+              <b>${escapeHTML(r.id)}</b>
+              <div class="small muted">฿${money(r.total)} · ${escapeHTML(r.customer||"-")}</div>
+            </div>
+            <button class="btn tiny" onclick="viewOldReceipt('${r.id}')">ดู</button>
+            <button class="btn danger tiny" onclick="deleteReceipt('${r.id}')">ลบ</button>
+          </div>
+        `).join(""):'<div class="empty">ยังไม่มีประวัติ</div>'}</div>
+      </div>`;
+  }
+}
+
+// ============================================
+// PRODUCT EDITOR
+// ============================================
+
+function openProductEditor(id=""){
+  if(!isAdmin) return;
+
+  const old=data.products.find(p=>p.id===id)||{
+    id:"",name:"",price:"",description:"",
+    category:"",tags:[],image:"",hit:false,
+    recommended:false,sale:false,driveLink:""
+  };
+
+  document.getElementById("modalRoot").innerHTML=`
+    <div class="modal-backdrop" onclick="closeModal(event)">
+      <div class="modal" onclick="event.stopPropagation()">
+        <div class="modal-head">
+          <h3>${id?"Edit Product":"Add Product"}</h3>
+          <button class="close-btn" onclick="closeModal()">×</button>
+        </div>
+        <div class="field">
+          <label>ชื่อสินค้า</label>
+          <input id="productNameInput" value="${escapeHTML(old.name)}">
+        </div>
+        <div class="field">
+          <label>ราคา (บาท)</label>
+          <input type="number" id="productPriceInput" min="0" step="0.01" value="${escapeHTML(old.price)}">
+        </div>
+        <div class="field">
+          <label>หมวดหมู่</label>
+          <input id="productCategoryInput" value="${escapeHTML(old.category)}">
+        </div>
+        <div class="field">
+          <label>แท็กสินค้า (คั่นด้วยเครื่องหมายจุลภาค)</label>
+          <input id="productTagsInput" value="${escapeHTML((old.tags||[]).join(", "))}" placeholder="เช่น cute, gothic, handmade">
+        </div>
+        <div class="field">
+          <label>รายละเอียดสินค้า</label>
+          <textarea id="productDescriptionInput">${escapeHTML(old.description)}</textarea>
+        </div>
+        <div class="field">
+          <label>ลิงก์สินค้า / Google Drive (ถ้ามี)</label>
+          <input id="productDriveInput" value="${escapeHTML(old.driveLink||"")}" placeholder="https://...">
+        </div>
+        <div class="field">
+          <label>รูปสินค้า</label>
+          <input type="file" accept="image/*" id="productImageInput">
+          ${old.image?`<img src="${old.image}" style="width:100px;height:100px;object-fit:cover;border-radius:12px;margin-top:10px">`:""}
+        </div>
+        <div class="field">
+          <label><input type="checkbox" id="productHitInput" style="width:auto" ${old.hit?"checked":""}> สินค้าฮิต</label>
+          <label><input type="checkbox" id="productRecommendedInput" style="width:auto" ${old.recommended?"checked":""}> แนะนำ</label>
+          <label><input type="checkbox" id="productSaleInput" style="width:auto" ${old.sale?"checked":""}> โปรโมชั่น</label>
+        </div>
+        <button class="btn primary" style="width:100%" onclick="saveProduct('${id}')">บันทึกสินค้า</button>
+      </div>
+    </div>`;
+}
+
+async function fileToDataURL(file){
+  return new Promise((resolve,reject)=>{
+    const reader=new FileReader();
+    reader.onload=()=>resolve(reader.result);
+    reader.onerror=reject;
+    reader.readAsDataURL(file);
+  });
+}
+
+async function saveProduct(id){
+  const name=document.getElementById("productNameInput").value.trim();
+  const price=Number(document.getElementById("productPriceInput").value);
+
+  if(!name||!Number.isFinite(price)||price<0){
+    toast("กรุณากรอกชื่อสินค้าและราคาที่ถูกต้อง");
+    return;
+  }
+
+  const old=data.products.find(p=>p.id===id)||{};
+  const file=document.getElementById("productImageInput").files[0];
+  let image=old.image||"";
+
+  if(file) image=await fileToDataURL(file);
+
+  const product={
+    id:id||makeId(),
+    name,price,
+    category:document.getElementById("productCategoryInput").value.trim(),
+    tags:document.getElementById("productTagsInput").value.split(",").map(t=>t.trim()).filter(Boolean),
+    description:document.getElementById("productDescriptionInput").value.trim(),
+    driveLink:document.getElementById("productDriveInput").value.trim(),
+    image,
+    hit:document.getElementById("productHitInput").checked,
+    recommended:document.getElementById("productRecommendedInput").checked,
+    sale:document.getElementById("productSaleInput").checked
+  };
+
+  const index=data.products.findIndex(p=>p.id===id);
+  if(index>=0) data.products[index]=product;
+  else data.products.unshift(product);
+
+  saveData();
+  closeModal();
+  renderProducts();
+  renderAdmin();
+  toast("บันทึกสินค้าแล้ว ♡");
+}
+
+function deleteProduct(id){
+  if(!confirm("ต้องการลบสินค้านี้หรือไม่?")) return;
+  data.products=data.products.filter(p=>p.id!==id);
+  cart=cart.filter(item=>item.id!==id);
+  saveData();
+  renderProducts();
+  renderCart();
+  renderAdmin();
+  toast("ลบสินค้าแล้ว");
+}
+
+// ============================================
+// SHOP PROFILE SETTINGS
+// ============================================
+
+async function saveShopProfile(){
+  data.settings.shopName=document.getElementById("settingShopName").value.trim();
+  data.settings.description=document.getElementById("settingDescription").value.trim();
+
+  const avatar=document.getElementById("settingAvatarFile").files[0];
+  const banner=document.getElementById("settingBannerFile").files[0];
+
+  if(avatar) data.settings.avatar=await fileToDataURL(avatar);
+  if(banner) data.settings.banner=await fileToDataURL(banner);
+
+  saveData();
+  renderProfile();
+  toast("บันทึกโปรไฟล์ร้านแล้ว ♡");
+}
+
+// ============================================
+// CONTACT LINKS
+// ============================================
+
+function contactAdminList(){
+  if(!data.settings.contacts.length) return '<div class="empty">ยังไม่มีช่องทางติดต่อ</div>';
+
+  return data.settings.contacts.map((c,index)=>`
+    <div class="admin-payment-item">
+      <div style="flex:1;min-width:0">
+        <b>${escapeHTML(c.name)}</b>
+        <div class="small muted">${escapeHTML(c.url)}</div>
+      </div>
+      <button class="btn tiny" onclick="editContact('${c.id}')">แก้ไข</button>
+      <button class="btn danger tiny" onclick="deleteContact('${c.id}')">ลบ</button>
+    </div>
+  `).join("");
+}
+
+function addContact(){
+  editContact("");
+}
+
+function editContact(id){
+  const old=data.settings.contacts.find(c=>c.id===id)||{name:"",url:""};
+  document.getElementById("modalRoot").innerHTML=`
+    <div class="modal-backdrop" onclick="closeModal(event)">
+      <div class="modal" onclick="event.stopPropagation()">
+        <div class="modal-head">
+          <h3>Contact Link</h3>
+          <button class="close-btn" onclick="closeModal()">×</button>
+        </div>
+        <div class="field">
+          <label>ชื่อช่องทาง</label>
+          <input id="contactNameInput" value="${escapeHTML(old.name)}" placeholder="เช่น Instagram">
+        </div>
+        <div class="field">
+          <label>URL</label>
+          <input id="contactURLInput" value="${escapeHTML(old.url)}" placeholder="https://...">
+        </div>
+        <button class="btn primary" style="width:100%" onclick="saveContact('${id}')">บันทึก</button>
+      </div>
+    </div>`;
+}
+
+function saveContact(id){
+  const name=document.getElementById("contactNameInput").value.trim();
+  const url=document.getElementById("contactURLInput").value.trim();
+  if(!name||!/^https?:\/\//i.test(url)){
+    toast("กรุณากรอกชื่อและ URL ที่ถูกต้อง");
+    return;
+  }
+  const item={id:id||makeId(),name,url};
+  const index=data.settings.contacts.findIndex(c=>c.id===id);
+  if(index>=0) data.settings.contacts[index]=item;
+  else data.settings.contacts.push(item);
+  saveData();
+  closeModal();
+  renderAdmin();
+  renderProfile();
+}
+
+function deleteContact(id){
+  if(!confirm("ลบช่องทางติดต่อนี้หรือไม่?")) return;
+  data.settings.contacts=data.settings.contacts.filter(c=>c.id!==id);
+  saveData();
+  renderAdmin();
+  renderProfile();
+}
+
+// ============================================
+// REVIEW MANAGEMENT
+// ============================================
+
+function deleteReview(id){
+  if(!confirm("ต้องการลบรีวิวนี้หรือไม่?")) return;
+  data.reviews=data.reviews.filter(r=>r.id!==id);
+  saveData();
+  renderReviews();
+  renderAdmin();
+}
+
+function renderReviews(){
+  const root=document.getElementById("reviewList");
+  if(!root) return;
+  if(!data.reviews.length){
+    root.innerHTML='<div class="empty">ยังไม่มีรีวิวจากลูกค้า ♡</div>';
+    return;
+  }
+  root.innerHTML=data.reviews.map(r=>`
+    <div class="card review-card">
+      <div class="row between">
+        <b>${escapeHTML(r.name)}</b>
+        <span class="review-stars">${"★".repeat(r.rating||5)}</span>
+      </div>
+      <p style="white-space:pre-wrap">${escapeHTML(r.message)}</p>
+      <div class="small muted">${new Date(r.date).toLocaleDateString("th-TH")}</div>
+    </div>
+  `).join("");
+}
+
+// ============================================
+// CONTACT PAGE
+// ============================================
+
+function renderContact(){
+  const root=document.getElementById("contactContent");
+  if(!root) return;
+
+  root.innerHTML=data.settings.contacts.length
+    ?data.settings.contacts.map(c=>`
+      <a class="btn ghost" style="display:block;text-align:center;margin-bottom:9px;text-decoration:none"
+        href="${escapeHTML(c.url)}" target="_blank" rel="noopener">
+        ${escapeHTML(c.name)} ↗
+      </a>`).join("")
+    :'<div class="empty">ยังไม่ได้เพิ่มช่องทางติดต่อ</div>';
+}
+
+// ============================================
+// BACKUP / RESTORE
+// ============================================
+
+function exportBackup(){
+  const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement("a");
+  a.href=url;
+  a.download="JAORICHE-STUDIO16-backup.json";
+  a.click();
+  URL.revokeObjectURL(url);
+  toast("ส่งออกข้อมูลสำรองแล้ว");
+}
+
+async function importBackup(input){
+  const file=input.files?.[0];
+  if(!file) return;
+  try{
+    const imported=JSON.parse(await file.text());
+    if(!imported||typeof imported!=="object"||!imported.settings||!Array.isArray(imported.products)){
+      throw new Error("Invalid backup");
+    }
+    if(!confirm("การนำเข้าจะเขียนทับข้อมูลปัจจุบัน ต้องการดำเนินการหรือไม่?")) return;
+    data={
+      ...clone(defaultData),
+      ...imported,
+      settings:{...defaultData.settings,...(imported.settings||{})}
+    };
+    saveData();
+    renderAll();
+    renderAdmin();
+    toast("นำเข้าข้อมูลสำรองแล้ว ♡");
+  }catch(error){
+    toast("ไฟล์สำรองไม่ถูกต้อง");
+  }
+}
+</script>
+
+<script>
+// ============================================
+// RENDER ALL
+// ============================================
+
+function renderAll(){
+  renderProfile();
+  renderProducts();
+  renderCart();
+  renderPayment();
+  renderReviews();
+  renderContact();
+  renderReceiptHistory();
+  renderAdmin();
+}
+
+// ============================================
+// INITIALIZE
+// ============================================
+
+document.addEventListener("DOMContentLoaded",async()=>{
+  renderAll();
+  await loadFirebase();
+  renderAll();
+});
+
+// ============================================
+// PREVENT ACCIDENTAL EMPTY LINKS
+// ============================================
+
+document.addEventListener("click",event=>{
+  const link=event.target.closest("a");
+  if(link&&(!link.getAttribute("href")||link.getAttribute("href")==="#")){
+    event.preventDefault();
+  }
+});
+</script>
+
+</body>
+</html>
